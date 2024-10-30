@@ -98,14 +98,14 @@ func calculateWithTh(wg *sync.WaitGroup, th int, data string, results []string) 
 
 // CombineResults
 func CombineResults(in, out chan interface{}) {
-	var results []string
+	var res []string
 	for data := range in {
-		results = append(results, fmt.Sprintf("%v", data))
+		res = append(res, fmt.Sprintf("%v", data))
 	}
 
-	sort.Strings(results)
-	finalResult := strings.Join(results, "_")
-	out <- finalResult
-	fmt.Println("CombineResults result ", finalResult)
+	sort.Strings(res)
+	final := strings.Join(res, "_")
+	out <- final
+	fmt.Println("CombineResults result ", final)
 
 }
